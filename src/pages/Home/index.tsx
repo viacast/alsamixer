@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import VolumeBars from 'components/VolumeBar';
 import { Container } from './styles';
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
-  return <Container>{t('general:home')}</Container>;
+  const [volume, setVolume] = useState([100, 100]);
+  const [state, setState] = useState([false, false]);
+
+  return (
+    <Container>
+      <VolumeBars
+        volume={volume}
+        setVolume={setVolume}
+        mute={state}
+        setState={setState}
+        range={{
+          min: 0,
+          max: 100,
+        }}
+      />
+    </Container>
+  );
 };
 
 export default Home;
