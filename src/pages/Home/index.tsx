@@ -11,6 +11,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <VolumeBars
+        position={[100, 100]}
         volume={volume}
         setVolume={setVolume}
         mute={state}
@@ -18,6 +19,50 @@ const Home: React.FC = () => {
         range={{
           min: 0,
           max: 64,
+        }}
+      />
+      <VolumeBars
+        position={[100, 400]}
+        volume={volume}
+        setVolume={setVolume}
+        mute={state}
+        setState={setState}
+        range={{
+          min: 0,
+          max: 4,
+        }}
+      />
+      <VolumeBars
+        position={[100, 700]}
+        volume={volume}
+        setVolume={setVolume}
+        mute={state}
+        setState={setState}
+        range={{
+          min: 0,
+          max: 14,
+        }}
+      />
+      <VolumeBars
+        position={[100, 1000]}
+        volume={volume}
+        setVolume={setVolume}
+        mute={state}
+        setState={setState}
+        range={{
+          min: 0,
+          max: 24,
+        }}
+      />
+      <VolumeBars
+        position={[100, 1300]}
+        volume={volume}
+        setVolume={setVolume}
+        mute={state}
+        setState={setState}
+        range={{
+          min: 0,
+          max: 32,
         }}
       />
     </Container>

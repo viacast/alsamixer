@@ -5,9 +5,10 @@ export interface Props {
   value: number;
   setValue: (val: number) => void;
   disable: boolean;
+  step: number;
 }
 
-const Picker: React.FC<Props> = ({ value, setValue, disable }) => {
+const Picker: React.FC<Props> = ({ value, setValue, disable, step }) => {
   return (
     <Rnd
       style={{
@@ -25,10 +26,10 @@ const Picker: React.FC<Props> = ({ value, setValue, disable }) => {
         height: 50,
       }}
       onDragStop={(e, d) => {
-        setValue(d.y);
+        setValue(d.lastY);
       }}
       dragAxis="y"
-      dragGrid={[5.89, 5.89]}
+      dragGrid={[step, step]}
       bounds=".soundmixer-slider-container"
       enableResizing={false}
       disableDragging={disable}
