@@ -6,13 +6,11 @@ import {
   Container,
   GroupBars,
   LeftSlider,
-  Options,
-  OptionsContainer,
   RightSlider,
   Rule,
   SliderBar,
-  Values,
 } from './styles';
+import { MuteSwitch } from '..';
 
 export interface VolumeBarsProps {
   volume: Mixer['volume'];
@@ -31,16 +29,12 @@ const VolumeBars: React.FC<VolumeBarsProps> = ({
 }) => {
   const marks = `${String(589 / range.max)}px`;
 
+  const [internalState, setInternalState] = useState([mute[0], mute[1]]);
+
   const [barValue, setBarValue] = useState({
     left: 589 - 5.89 * volume[0],
     right: 589 - 5.89 * volume[1],
   });
-
-  const [leftIsDragging, setLeftIsDragging] = useState(false);
-  const [rightIsDragging, setRightIsDragging] = useState(false);
-
-  const [stateLeft, setStateLeft] = useState(mute[0]);
-  const [stateRight, setStateRight] = useState(mute[1]);
 
   useEffect(() => {
     setVolume([barValue.left, barValue.right]);
@@ -48,68 +42,41 @@ const VolumeBars: React.FC<VolumeBarsProps> = ({
 
   return (
     <Container>
-      <LeftSlider
-        className="soundmixer-slider-container"
-        onMouseDown={() => setLeftIsDragging(true)}
-        onMouseUp={() => setLeftIsDragging(false)}
-        drag={leftIsDragging ? 'grabbing' : 'grab'}
-      >
+      <LeftSlider className="soundmixer-slider-container">
         <Picker
           setValue={val => setBarValue({ left: barValue.left, right: val })}
           value={barValue.left}
-          disable={stateRight}
+          disable={internalState[1]}
         />
       </LeftSlider>
-      <RightSlider
-        className="soundmixer-slider-container"
-        onMouseDown={() => setRightIsDragging(true)}
-        onMouseUp={() => setRightIsDragging(false)}
-        drag={rightIsDragging ? 'grabbing' : 'grab'}
-      >
+      <RightSlider className="soundmixer-slider-container">
         <Picker
           setValue={val => setBarValue({ left: val, right: barValue.right })}
           value={barValue.right}
-          disable={stateLeft}
+          disable={internalState[0]}
         />
       </RightSlider>
-      <Rule range={marks} left="0%" />
+      <Rule range={marks} left="36.9%" />
       <Rule range={marks} />
       <BarContainer>
         <GroupBars>
           <SliderBar
-            mute={stateLeft ? 'grayscale(50%)' : 'none'}
+            mute={internalState[0] ? 'grayscale(90%)' : 'none'}
             size={`${589 - barValue.left}px`}
           />
           <SliderBar
-            mute={stateRight ? 'grayscale(50%)' : 'none'}
+            mute={internalState[1] ? 'grayscale(90%)' : 'none'}
             size={`${589 - barValue.right}px`}
           />
         </GroupBars>
       </BarContainer>
-      <OptionsContainer display>
-        <Options
-          onClick={() => {
-            setStateLeft(e => !e);
-            setState([!mute[0], mute[1]]);
-          }}
-        >
-          {stateLeft ? 'M' : 'O'}
-        </Options>
-        <Options
-          onClick={() => {
-            setStateRight(e => !e);
-            setState([mute[0], !mute[1]]);
-          }}
-        >
-          {stateRight ? 'M' : 'O'}
-        </Options>
-      </OptionsContainer>
-      <Values>
-        L - R
-        <br />
-        {`${Math.floor(((589 - barValue.right) * 100) / 589)}%` +
-          ` - ${Math.floor(((589 - barValue.left) * 100) / 589)}%`}
-      </Values>
+      <MuteSwitch
+        mute={mute}
+        setState={setState}
+        barValue={barValue}
+        internalState={internalState}
+        setInternalState={setInternalState}
+      />
     </Container>
   );
 };

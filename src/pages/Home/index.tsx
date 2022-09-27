@@ -17,7 +17,7 @@ const Home: React.FC = () => {
         setState={setState}
         range={{
           min: 0,
-          max: 100,
+          max: 64,
         }}
       />
     </Container>

@@ -45,66 +45,32 @@ export const Rule = styled.div<{ left?: string; range: string }>`
   height: 589px;
   position: absolute;
   top: 14px;
-  left: ${({ left }) => left || 'calc(100% - 16px)'};
+  left: ${({ left }) => left || '50.75%'};
+  z-index: 3;
   transform: rotate(180deg);
-  background: linear-gradient(
-    0deg,
-    #fcfcfc 0%,
-    transparent 1px,
-    transparent 100%
-  );
+  background: linear-gradient(0deg, #000 0%, transparent 5px, transparent 100%);
   background-size: 16px ${({ range }) => range || '191px'};
 `;
 
-export const LeftSlider = styled.div<{ drag: string }>`
+export const LeftSlider = styled.div`
   position: absolute;
-  left: -50px;
+  left: -10px;
   top: -11.78px;
   height: calc(100% - 44px);
-  cursor: ${({ drag }) => drag || 'grabbing'};
+  cursor: grab;
+  :active {
+    cursor: grabbing;
+  }
 `;
 
-export const RightSlider = styled.div<{ drag: string }>`
+export const RightSlider = styled.div`
   position: absolute;
-  right: -50px;
+  right: -10px;
   top: -11.78px;
   height: calc(100% - 44px);
   transform: rotateY(180deg);
-  cursor: ${({ drag }) => drag || 'grabbing'};
-`;
-
-export const OptionsContainer = styled.div<{ display: boolean }>`
-  display: ${({ display }) => (display ? 'inline-block' : 'none')};
-  width: 50px;
-  height: 60px;
-  border: 3px solid var(--color-primary-2);
-  user-select: none;
-`;
-
-export const Options = styled.button`
-  width: 50%;
-  height: 100%;
-  position: relative;
-  float: right;
-  font-family: Nunito, sans-serif;
-  font-size: 24;
-  font-weight: bold;
-  vertical-align: middle;
-  text-align: center;
-  color: var(--color-neutral-2);
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-`;
-
-export const Values = styled.div`
-  position: absolute;
-  left: 0px;
-  width: 130px;
-  text-align: center;
-  font-family: Nunito, sans-serif;
-  font-size: 24;
-  font-weight: bold;
-  user-select: none;
-  padding-block: 15px;
+  cursor: grab;
+  :active {
+    cursor: grabbing;
+  }
 `;
