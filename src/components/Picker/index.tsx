@@ -4,11 +4,10 @@ import { Rnd } from 'react-rnd';
 export interface Props {
   value: number;
   setValue: (val: number) => void;
-  disable: boolean;
   step: number;
 }
 
-const Picker: React.FC<Props> = ({ value, setValue, disable, step }) => {
+const Picker: React.FC<Props> = ({ value, setValue, step }) => {
   return (
     <Rnd
       style={{
@@ -32,7 +31,6 @@ const Picker: React.FC<Props> = ({ value, setValue, disable, step }) => {
       dragGrid={[step, step]}
       bounds=".soundmixer-slider-container"
       enableResizing={false}
-      disableDragging={disable}
     >
       <svg
         width="25"
