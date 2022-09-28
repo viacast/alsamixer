@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <VolumeBars
-        position={[100, 100]}
+        position={[100, 45]}
         volume={volume}
         setVolume={setVolume}
         mute={state}
@@ -22,52 +22,64 @@ const Home: React.FC = () => {
         muteSwitch
       />
       <MuteSwitch
-        position={[100, 300]}
+        position={[100, 245]}
         mute={state}
         setState={setState}
         internalState={state}
         setInternalState={setState}
       />
       <VolumeBars
-        position={[100, 500]}
+        position={[100, 445]}
         volume={volume}
         setVolume={setVolume}
         mute={state}
         setState={setState}
         range={{
           min: 0,
-          max: 4,
+          max: 3,
         }}
         muteSwitch={false}
       />
       <MuteSwitch
-        position={[100, 700]}
+        position={[100, 645]}
         mute={state}
         setState={setState}
         internalState={state}
         setInternalState={setState}
       />
       <VolumeBars
-        position={[100, 900]}
+        position={[100, 845]}
         volume={volume}
         setVolume={setVolume}
         mute={state}
         setState={setState}
         range={{
           min: 0,
-          max: 14,
+          max: 58,
         }}
         muteSwitch
       />
       <VolumeBars
-        position={[100, 1200]}
+        position={[100, 1145]}
         volume={volume}
         setVolume={setVolume}
         mute={state}
         setState={setState}
         range={{
           min: 0,
-          max: 24,
+          max: 10,
+        }}
+        muteSwitch={false}
+      />
+      <VolumeBars
+        position={[100, 1445]}
+        volume={volume}
+        setVolume={setVolume}
+        mute={state}
+        setState={setState}
+        range={{
+          min: 0,
+          max: 25,
         }}
         muteSwitch={false}
       />
