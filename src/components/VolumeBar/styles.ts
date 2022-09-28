@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div<{ top: string; left: string }>`
   width: fit-content;
-  height: fit-content;
+  height: 679px;
   position: absolute;
   top: ${({ top }) => top || '100px'};
   left: ${({ left }) => left || '100px'};
@@ -11,19 +11,19 @@ export const Container = styled.div<{ top: string; left: string }>`
 
 export const BarContainer = styled.div`
   width: 50px;
-  height: 615px;
+  height: calc(100% - 64px);
   border: 3px solid var(--color-primary-2);
 `;
 
 export const GroupBars = styled.div`
   width: 34px;
-  height: 585px;
+  height: calc(100% - 30px);
   display: flex;
   flex: 1;
   justify-content: space-between;
   position: relative;
   margin-inline: 5px;
-  margin-block: 11px;
+  margin-block: 17px;
   transform: rotateZ(180deg);
 `;
 
@@ -32,17 +32,17 @@ export const SliderBar = styled.div<{
   size: string;
 }>`
   width: 16px;
-  height: ${({ size }) => size || '585px'};
+  height: ${({ size }) => size || '100%'};
   display: flex;
   flex-direction: column;
   background: linear-gradient(0deg, #c11e0f 0%, #f2921b 16%, #75b831 100%);
-  background-size: 16px 585px;
+  background-size: 16px calc(679px * 0.8616);
   filter: ${({ mute }) => mute || 'none'};
 `;
 
 export const Rule = styled.div<{ left?: string; range: string }>`
   width: 16px;
-  height: 585px;
+  height: calc(100% - 94px);
   position: absolute;
   top: 14px;
   left: ${({ left }) => left || '80%'};
@@ -52,7 +52,8 @@ export const Rule = styled.div<{ left?: string; range: string }>`
     transparent 1px,
     transparent 100%
   );
-  background-size: 16px ${({ range }) => range || '191px'};
+  background-size: 16px
+    ${({ range }) => range || 'calc((100% - (0.1384 * 679px))/2)'};
   border-top: 1px solid var(--color-neutral-2);
   border-bottom: 1px solid var(--color-neutral-2);
 `;

@@ -46,8 +46,14 @@ const MuteSwitch: React.FC<MuteSwitchProps> = ({
         <Values>
           L - R
           <br />
-          {`${Math.round(((585 - barValue.right) * 100) / 585)}%` +
-            ` - ${Math.round(((585 - barValue.left) * 100) / 585)}%`}
+          {`${Math.round(
+            ((Math.round(679 * 0.8616) - barValue.right) * 100) /
+              Math.round(679 * 0.8616),
+          )}%` +
+            ` - ${Math.round(
+              ((Math.round(679 * 0.8616) - barValue.left) * 100) /
+                Math.round(679 * 0.8616),
+            )}%`}
         </Values>
       )}
     </Container>
