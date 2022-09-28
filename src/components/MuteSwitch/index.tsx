@@ -1,11 +1,12 @@
 import React from 'react';
 import { Mixer } from 'services/alsamixer/typings';
-import { OptionsContainer, Options, Values } from './styles';
+import { OptionsContainer, Options, Values, Container } from './styles';
 
 export interface MuteSwitchProps {
   mute: Mixer['mute'];
+  position: [number, number];
   setState: (s: [boolean, boolean]) => void;
-  barValue: {
+  barValue?: {
     left: number;
     right: number;
   };
@@ -15,13 +16,14 @@ export interface MuteSwitchProps {
 
 const MuteSwitch: React.FC<MuteSwitchProps> = ({
   mute,
+  position,
   setState,
   barValue,
   internalState,
   setInternalState,
 }) => {
   return (
-    <>
+    <Container top={`${position[0] + 612}px`} left={`${position[1]}px`}>
       <OptionsContainer display>
         <Options
           onClick={() => {
@@ -40,14 +42,20 @@ const MuteSwitch: React.FC<MuteSwitchProps> = ({
           {internalState[1] ? 'M' : 'O'}
         </Options>
       </OptionsContainer>
-      <Values>
-        L - R
-        <br />
-        {`${Math.round(((585 - barValue.right) * 100) / 585)}%` +
-          ` - ${Math.round(((585 - barValue.left) * 100) / 585)}%`}
-      </Values>
-    </>
+      {barValue && (
+        <Values>
+          L - R
+          <br />
+          {`${Math.round(((585 - barValue.right) * 100) / 585)}%` +
+            ` - ${Math.round(((585 - barValue.left) * 100) / 585)}%`}
+        </Values>
+      )}
+    </Container>
   );
+};
+
+MuteSwitch.defaultProps = {
+  barValue: undefined,
 };
 
 export default MuteSwitch;

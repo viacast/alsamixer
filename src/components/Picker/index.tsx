@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Rnd } from 'react-rnd';
 
 export interface Props {

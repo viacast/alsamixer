@@ -43,45 +43,48 @@ const VolumeBars: React.FC<VolumeBarsProps> = ({
   }, [barValue, setVolume]);
 
   return (
-    <Container top={`${position[0]}px`} left={`${position[1]}px`}>
-      <LeftSlider className="soundmixer-slider-container">
-        <Picker
-          setValue={val => setBarValue({ left: barValue.left, right: val })}
-          value={barValue.left}
-          disable={internalState[1]}
-          step={marks}
-        />
-      </LeftSlider>
-      <RightSlider className="soundmixer-slider-container">
-        <Picker
-          setValue={val => setBarValue({ left: val, right: barValue.right })}
-          value={barValue.right}
-          disable={internalState[0]}
-          step={marks}
-        />
-      </RightSlider>
-      <Rule range={`${String(marks)}px`} left="10%" />
-      <Rule range={`${String(marks)}px`} />
-      <BarContainer>
-        <GroupBars>
-          <SliderBar
-            mute={internalState[0] ? 'grayscale(90%)' : 'none'}
-            size={`${585 - barValue.left}px`}
+    <>
+      <Container top={`${position[0]}px`} left={`${position[1]}px`}>
+        <LeftSlider className="soundmixer-slider-container">
+          <Picker
+            setValue={val => setBarValue({ left: barValue.left, right: val })}
+            value={barValue.left}
+            disable={internalState[1]}
+            step={marks}
           />
-          <SliderBar
-            mute={internalState[1] ? 'grayscale(90%)' : 'none'}
-            size={`${585 - barValue.right}px`}
+        </LeftSlider>
+        <RightSlider className="soundmixer-slider-container">
+          <Picker
+            setValue={val => setBarValue({ left: val, right: barValue.right })}
+            value={barValue.right}
+            disable={internalState[0]}
+            step={marks}
           />
-        </GroupBars>
-      </BarContainer>
+        </RightSlider>
+        <Rule range={`${String(marks)}px`} left="10%" />
+        <Rule range={`${String(marks)}px`} />
+        <BarContainer>
+          <GroupBars>
+            <SliderBar
+              mute={internalState[0] ? 'grayscale(90%)' : 'none'}
+              size={`${585 - barValue.left}px`}
+            />
+            <SliderBar
+              mute={internalState[1] ? 'grayscale(90%)' : 'none'}
+              size={`${585 - barValue.right}px`}
+            />
+          </GroupBars>
+        </BarContainer>
+      </Container>
       <MuteSwitch
         mute={mute}
+        position={position}
         setState={setState}
         barValue={barValue}
         internalState={internalState}
         setInternalState={setInternalState}
       />
-    </Container>
+    </>
   );
 };
 

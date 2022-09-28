@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+export const Container = styled.div<{ top: string; left: string }>`
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  top: ${({ top }) => top || '100px'};
+  left: ${({ left }) => left || '100px'};
+  padding-inline: 40px;
+`;
+
 export const OptionsContainer = styled.div<{ display: boolean }>`
   display: ${({ display }) => (display ? 'inline-block' : 'none')};
   width: 50px;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import VolumeBars from 'components/VolumeBar';
+import MuteSwitch from 'components/MuteSwitch';
 import { Container } from './styles';
 
 const Home: React.FC = () => {
@@ -32,8 +33,15 @@ const Home: React.FC = () => {
           max: 4,
         }}
       />
-      <VolumeBars
+      <MuteSwitch
         position={[100, 700]}
+        mute={state}
+        setState={setState}
+        internalState={state}
+        setInternalState={setState}
+      />
+      <VolumeBars
+        position={[100, 1000]}
         volume={volume}
         setVolume={setVolume}
         mute={state}
@@ -44,17 +52,6 @@ const Home: React.FC = () => {
         }}
       />
       <VolumeBars
-        position={[100, 1000]}
-        volume={volume}
-        setVolume={setVolume}
-        mute={state}
-        setState={setState}
-        range={{
-          min: 0,
-          max: 24,
-        }}
-      />
-      <VolumeBars
         position={[100, 1300]}
         volume={volume}
         setVolume={setVolume}
@@ -62,7 +59,7 @@ const Home: React.FC = () => {
         setState={setState}
         range={{
           min: 0,
-          max: 32,
+          max: 24,
         }}
       />
     </Container>
