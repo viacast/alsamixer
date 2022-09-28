@@ -46,7 +46,6 @@ export const Rule = styled.div<{ left?: string; range: string }>`
   position: absolute;
   top: 14px;
   left: ${({ left }) => left || '80%'};
-  transform: rotate(180deg);
   background: linear-gradient(
     0deg,
     var(--color-neutral-2) 0%,
@@ -54,6 +53,8 @@ export const Rule = styled.div<{ left?: string; range: string }>`
     transparent 100%
   );
   background-size: 16px ${({ range }) => range || '191px'};
+  border-top: 1px solid var(--color-neutral-2);
+  border-bottom: 1px solid var(--color-neutral-2);
 `;
 
 export const LeftSlider = styled.div`

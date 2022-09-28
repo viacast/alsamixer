@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Rnd } from 'react-rnd';
 
 export interface Props {
@@ -25,8 +25,8 @@ const Picker: React.FC<Props> = ({ value, setValue, disable, step }) => {
         width: 50,
         height: 50,
       }}
-      onDragStop={(e, d) => {
-        setValue(d.lastY);
+      onDrag={(e, d) => {
+        setValue(d.y);
       }}
       dragAxis="y"
       dragGrid={[step, step]}
