@@ -66,11 +66,11 @@ const VolumeBars: React.FC<VolumeBarsProps> = ({
         <BarContainer>
           <GroupBars>
             <SliderBar
-              mute={internalState[0] ? 'grayscale(90%)' : 'none'}
+              mute={internalState[1] ? 'grayscale(90%)' : 'none'}
               size={`${585 - barValue.left}px`}
             />
             <SliderBar
-              mute={internalState[1] ? 'grayscale(90%)' : 'none'}
+              mute={internalState[0] ? 'grayscale(90%)' : 'none'}
               size={`${585 - barValue.right}px`}
             />
           </GroupBars>
