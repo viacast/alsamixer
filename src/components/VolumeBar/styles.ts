@@ -36,7 +36,7 @@ export const SliderBar = styled.div<{
   display: flex;
   flex-direction: column;
   background: linear-gradient(0deg, #c11e0f 0%, #f2921b 16%, #75b831 100%);
-  background-size: 16px calc(679px * 0.8616);
+  background-size: 16px 585px;
   filter: ${({ mute }) => mute || 'none'};
 `;
 
@@ -52,8 +52,7 @@ export const Rule = styled.div<{ left?: string; range: string }>`
     transparent 1px,
     transparent 100%
   );
-  background-size: 16px
-    ${({ range }) => range || 'calc((100% - (0.1384 * 679px))/2)'};
+  background-size: 16px ${({ range }) => range || '292.5px'};
   border-top: 1px solid var(--color-neutral-2);
   border-bottom: 1px solid var(--color-neutral-2);
 `;

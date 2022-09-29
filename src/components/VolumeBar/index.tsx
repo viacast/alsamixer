@@ -31,15 +31,13 @@ const VolumeBars: React.FC<VolumeBarsProps> = ({
   setState,
   muteSwitch,
 }) => {
-  const marks = Math.round(679 * 0.8616) / range.max;
+  const marks = 585 / range.max;
 
   const [internalState, setInternalState] = useState([mute[0], mute[1]]);
 
   const [barValue, setBarValue] = useState({
-    left:
-      Math.round(679 * 0.8616) - (Math.round(679 * 0.8616) / 100) * volume[0],
-    right:
-      Math.round(679 * 0.8616) - (Math.round(679 * 0.8616) / 100) * volume[1],
+    left: 585 * (100 - volume[0]),
+    right: 585 * (100 - volume[1]),
   });
 
   useEffect(() => {
@@ -69,11 +67,11 @@ const VolumeBars: React.FC<VolumeBarsProps> = ({
           <GroupBars>
             <SliderBar
               mute={internalState[0] ? 'grayscale(90%)' : 'none'}
-              size={`${Math.round(679 * 0.8616) - barValue.left}px`}
+              size={`${585 - barValue.left}px`}
             />
             <SliderBar
               mute={internalState[1] ? 'grayscale(90%)' : 'none'}
-              size={`${Math.round(679 * 0.8616) - barValue.right}px`}
+              size={`${585 - barValue.right}px`}
             />
           </GroupBars>
         </BarContainer>
@@ -81,14 +79,8 @@ const VolumeBars: React.FC<VolumeBarsProps> = ({
           <Values>
             L - R
             <br />
-            {`${Math.round(
-              ((Math.round(679 * 0.8616) - barValue.right) * 100) /
-                Math.round(679 * 0.8616),
-            )}%` +
-              ` - ${Math.round(
-                ((Math.round(679 * 0.8616) - barValue.left) * 100) /
-                  Math.round(679 * 0.8616),
-              )}%`}
+            {`${Math.round(((585 - barValue.right) * 100) / 585)}%` +
+              ` - ${Math.round(((585 - barValue.left) * 100) / 585)}%`}
           </Values>
         )}
       </Container>
