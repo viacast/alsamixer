@@ -5,9 +5,8 @@ import {
   BarContainer,
   Container,
   GroupBars,
-  LeftSlider,
-  RightSlider,
   Rule,
+  Slider,
   SliderBar,
   Values,
 } from './styles';
@@ -50,20 +49,20 @@ const VolumeBars: React.FC<VolumeBarsProps> = ({
   return (
     <>
       <Container top={`${position[0]}px`} left={`${position[1]}px`}>
-        <LeftSlider className="soundmixer-slider-container">
+        <Slider invert={false} className="soundmixer-slider-container">
           <Picker
             setValue={val => setBarValue({ left: barValue.left, right: val })}
             value={barValue.left}
             step={marks}
           />
-        </LeftSlider>
-        <RightSlider className="soundmixer-slider-container">
+        </Slider>
+        <Slider invert className="soundmixer-slider-container">
           <Picker
             setValue={val => setBarValue({ left: val, right: barValue.right })}
             value={barValue.right}
             step={marks}
           />
-        </RightSlider>
+        </Slider>
         <Rule range={`${String(marks)}px`} left="10%" />
         <Rule range={`${String(marks)}px`} />
         <BarContainer>

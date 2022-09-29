@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div<{ top: string; left: string }>`
   width: fit-content;
@@ -58,23 +58,20 @@ export const Rule = styled.div<{ left?: string; range: string }>`
   border-bottom: 1px solid var(--color-neutral-2);
 `;
 
-export const LeftSlider = styled.div`
+export const Slider = styled.div<{ invert: boolean }>`
   position: absolute;
-  left: -50px;
   top: -11.78px;
   height: calc(100% - 44px);
-  cursor: grab;
-  :active {
-    cursor: grabbing;
-  }
-`;
-
-export const RightSlider = styled.div`
-  position: absolute;
-  right: -50px;
-  top: -11.78px;
-  height: calc(100% - 44px);
-  transform: rotateY(180deg);
+  ${({ invert }) =>
+    (invert &&
+      css`
+        right: -50px;
+        transform: rotateY(180deg);
+      `) ||
+    (!invert &&
+      css`
+        left: -50px;
+      `)}
   cursor: grab;
   :active {
     cursor: grabbing;

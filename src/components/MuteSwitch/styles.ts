@@ -21,8 +21,6 @@ export const Options = styled.button`
   width: 50%;
   height: 100%;
   position: relative;
-  float: right;
-  vertical-align: middle;
   color: var(--color-neutral-2);
   background-color: transparent;
   border: none;
