@@ -64,6 +64,8 @@ export default createGlobalStyle`
   button {
     font-family: 'Nunito', Arial, Helvetica, sans-serif;
     font-size: 16px;
+    font-weight: bold;
+    text-align: center;
   }
 
   .no-user-select {

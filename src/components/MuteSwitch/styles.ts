@@ -22,11 +22,7 @@ export const Options = styled.button`
   height: 100%;
   position: relative;
   float: right;
-  font-family: Nunito, sans-serif;
-  font-size: 24;
-  font-weight: bold;
   vertical-align: middle;
-  text-align: center;
   color: var(--color-neutral-2);
   background-color: transparent;
   border: none;
@@ -37,10 +33,6 @@ export const Values = styled.div`
   position: absolute;
   left: 0px;
   width: 130px;
-  text-align: center;
-  font-family: Nunito, sans-serif;
-  font-size: 24;
-  font-weight: bold;
   user-select: none;
   padding-block: 15px;
 `;
