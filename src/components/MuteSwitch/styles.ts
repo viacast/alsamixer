@@ -9,6 +9,14 @@ export const Container = styled.div<{ top: string; left: string }>`
   padding-inline: 40px;
 `;
 
+export const BarContainer = styled.div`
+  width: 50px;
+  height: calc(679px - 64px);
+  border: 3px solid var(--color-primary-2);
+  border-bottom: 0px solid transparent;
+  border-style: dashed;
+`;
+
 export const OptionsContainer = styled.div<{ display: boolean }>`
   display: ${({ display }) => (display ? 'inline-block' : 'none')};
   width: 50px;
@@ -33,4 +41,10 @@ export const Values = styled.div`
   width: 130px;
   user-select: none;
   padding-block: 15px;
+  p {
+    color: var(--color-system-3);
+  }
+  span {
+    color: var(--color-neutral-3);
+  }
 `;

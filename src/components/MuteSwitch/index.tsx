@@ -1,8 +1,15 @@
 import React from 'react';
 import { Mixer } from 'services/alsamixer/typings';
-import { OptionsContainer, Options, Values, Container } from './styles';
+import {
+  OptionsContainer,
+  Options,
+  Values,
+  Container,
+  BarContainer,
+} from './styles';
 
 export interface MuteSwitchProps {
+  name: Mixer['name'];
   mute: Mixer['mute'];
   position: [number, number];
   setState: (s: [boolean, boolean]) => void;
@@ -15,6 +22,7 @@ export interface MuteSwitchProps {
 }
 
 const MuteSwitch: React.FC<MuteSwitchProps> = ({
+  name,
   mute,
   position,
   setState,
@@ -23,7 +31,8 @@ const MuteSwitch: React.FC<MuteSwitchProps> = ({
   setInternalState,
 }) => {
   return (
-    <Container top={`${position[0] + 612}px`} left={`${position[1]}px`}>
+    <Container top={`${position[0]}px`} left={`${position[1]}px`}>
+      <BarContainer />
       <OptionsContainer display>
         <Options
           onClick={() => {
@@ -42,14 +51,21 @@ const MuteSwitch: React.FC<MuteSwitchProps> = ({
           {internalState[1] ? 'M' : 'O'}
         </Options>
       </OptionsContainer>
-      {barValue && (
+      {(barValue && (
         <Values>
           L - R
           <br />
           {`${Math.round(((585 - barValue.right) * 100) / 585)}%` +
             ` - ${Math.round(((585 - barValue.left) * 100) / 585)}%`}
+          <br />
+          <p>{name}</p>
         </Values>
-      )}
+      )) ||
+        (!barValue && (
+          <Values>
+            <span>Disabled</span>
+          </Values>
+        ))}
     </Container>
   );
 };

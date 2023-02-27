@@ -13,6 +13,7 @@ import {
 import { MuteSwitch } from '..';
 
 export interface VolumeBarsProps {
+  name: Mixer['name'];
   volume: Mixer['volume'];
   range: Mixer['range'];
   mute: Mixer['mute'];
@@ -23,6 +24,7 @@ export interface VolumeBarsProps {
 }
 
 const VolumeBars: React.FC<VolumeBarsProps> = ({
+  name,
   volume,
   setVolume,
   range,
@@ -81,11 +83,14 @@ const VolumeBars: React.FC<VolumeBarsProps> = ({
             <br />
             {`${Math.round(((585 - barValue.right) * 100) / 585)}%` +
               ` - ${Math.round(((585 - barValue.left) * 100) / 585)}%`}
+            <br />
+            <p>{name}</p>
           </Values>
         )}
       </Container>
       {muteSwitch && (
         <MuteSwitch
+          name={name}
           mute={mute}
           position={position}
           setState={setState}

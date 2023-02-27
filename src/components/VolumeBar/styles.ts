@@ -79,8 +79,12 @@ export const Slider = styled.div<{ invert: boolean }>`
 
 export const Values = styled.div`
   position: absolute;
+  top: 675px;
   left: 0px;
   width: 130px;
   user-select: none;
   padding-block: 15px;
+  p {
+    color: var(--color-system-3);
+  }
 `;

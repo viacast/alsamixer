@@ -21,6 +21,7 @@ export enum MixerVolumeCapability {
 export type MixerCapability = MixerSwitchCapability | MixerVolumeCapability;
 
 export interface Mixer {
+  advanced: boolean;
   name: string;
   recording: boolean;
   mute: boolean[];
