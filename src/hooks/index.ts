@@ -1,5 +1,6 @@
 import useLocalStorage, { LocalStorageKeys } from './useLocalStorage';
+import useWindowSize from './useWindowSize';
 
-export { useLocalStorage };
+export { useLocalStorage, useWindowSize };
 
 export { LocalStorageKeys };
